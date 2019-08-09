@@ -9,7 +9,8 @@
     <packaging>pom</packaging>
     <description>基于curator封装zookeeper常用api</description>
     <modules>
-        <module>client</module>
+        <module>zkclient</module>
+        <module>zkclient-spring-boot-starter</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

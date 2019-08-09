@@ -1,4 +1,4 @@
-package com.xzixi.zookeeper.client;
+package com.xzixi.zookeeper.zkclient;
 
 import com.xzixi.zookeeper.exception.ZkException;
 import lombok.Data;
@@ -24,8 +24,9 @@ import java.util.concurrent.Executor;
 @Slf4j
 public class ZkClient {
 
+    private static final String DEFAULT_CHARSET = "utf8";
     private CuratorFramework client;
-    private String charset = "utf8";
+    private String charset = DEFAULT_CHARSET;
 
     public ZkClient(CuratorFrameworkFactory.Builder builder) {
         if (builder==null) {
