@@ -71,7 +71,7 @@ public class CuratorClient {
      *                 1、PERSISTENT 持久化目录节点，存储的数据不会丢失。
      *                 2、PERSISTENT_SEQUENTIAL顺序自动编号的持久化目录节点，存储的数据不会丢失
      *                 3、EPHEMERAL临时目录节点，一旦创建这个节点的客户端与服务器端口也就是session 超时，这种节点会被自动删除
-     *                 4、EPHEMERAL_SEQUENTIAL临时自动编号节点，一旦创建这个节点的客户端与服务器端口也就是session 超时，这种节点会被自动删除，并且根据当前已近存在的节点数自动加 1，然后返回给客户端已经成功创建的目录节点名。
+     *                 4、EPHEMERAL_SEQUENTIAL临时自动编号节点，一旦创建这个节点的客户端与服务器端口也就是session 超时，这种节点会被自动删除，并且根据当前已经存在的节点数自动加 1，然后返回给客户端已经成功创建的目录节点名。
      * @param path     节点名称
      * @param nodeData 节点数据
      */
@@ -91,7 +91,7 @@ public class CuratorClient {
      *             1、PERSISTENT 持久化目录节点，存储的数据不会丢失。
      *             2、PERSISTENT_SEQUENTIAL顺序自动编号的持久化目录节点，存储的数据不会丢失
      *             3、EPHEMERAL临时目录节点，一旦创建这个节点的客户端与服务器端口也就是session 超时，这种节点会被自动删除
-     *             4、EPHEMERAL_SEQUENTIAL临时自动编号节点，一旦创建这个节点的客户端与服务器端口也就是session 超时，这种节点会被自动删除，并且根据当前已近存在的节点数自动加 1，然后返回给客户端已经成功创建的目录节点名。
+     *             4、EPHEMERAL_SEQUENTIAL临时自动编号节点，一旦创建这个节点的客户端与服务器端口也就是session 超时，这种节点会被自动删除，并且根据当前已经存在的节点数自动加 1，然后返回给客户端已经成功创建的目录节点名。
      * @param path 节点名称
      */
     public void createNode(CreateMode mode, String path) {
