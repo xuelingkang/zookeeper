@@ -1,0 +1,19 @@
+server:
+  port: 8080
+curator-client:
+  connection-string: docker
+  namespace: xzixi
+  charset: utf8
+  session-timeout-ms: 60000
+  connection-timeout-ms: 15000
+  max-close-wait-ms: 1000
+  default-data: ""
+  can-be-read-only: false
+  use-container-parents-if-available: true
+  retry:
+    max-sleep-time-ms: 10000
+    base-sleep-time-ms: 1000
+    max-retries: 3
+  auth:
+    scheme: digest
+    auth: xzixi:xzixi
