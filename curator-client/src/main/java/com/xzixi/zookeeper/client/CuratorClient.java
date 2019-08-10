@@ -8,13 +8,14 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.cache.TreeCache;
 import org.apache.curator.framework.recipes.cache.TreeCacheListener;
-import org.apache.curator.framework.recipes.locks.InterProcessReadWriteLock;
+import org.apache.curator.framework.recipes.locks.*;
 import org.apache.curator.framework.state.ConnectionState;
 import org.apache.zookeeper.CreateMode;
 
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * zookeeper工具
@@ -203,6 +204,97 @@ public class CuratorClient {
             throw new CuratorClientException("获取子节点出错", e);
         }
         return childrenList;
+    }
+
+    /**
+     * 创建排他锁
+     *
+     * @param path 节点名称
+     * @return 排他锁
+     */
+    public InterProcessSemaphoreMutex getSemaphoreMutexLock(String path) {
+        return new InterProcessSemaphoreMutex(client, path);
+    }
+
+    /**
+     * 创建可重入排他锁
+     *
+     * @param path 节点名称
+     * @return 可重入排他锁
+     */
+    public InterProcessMutex getMutexLock(String path) {
+        return new InterProcessMutex(client, path);
+    }
+
+    /**
+     * 创建一组可重入排他锁
+     *
+     * @param paths 节点名称集合
+     * @return 锁容器
+     */
+    public InterProcessMultiLock getMultiMutexLock(List<String> paths) {
+        return new InterProcessMultiLock(client, paths);
+    }
+
+    /**
+     * 创建一组任意类型的锁
+     *
+     * @param locks 锁集合
+     * @return 锁容器
+     */
+    public InterProcessMultiLock getMultiLock(List<InterProcessLock> locks) {
+        return new InterProcessMultiLock(locks);
+    }
+
+    /**
+     * 加锁
+     *
+     * @param lock 分布式锁对象
+     */
+    public void acquire(InterProcessLock lock) {
+        try {
+            lock.acquire();
+        } catch (Exception e) {
+            throw new CuratorClientException("加锁失败", e);
+        }
+    }
+
+    /**
+     * 加锁
+     *
+     * @param lock 分布式锁对象
+     * @param time 等待时间
+     * @param unit 时间单位
+     */
+    public void acquire(InterProcessLock lock, long time, TimeUnit unit) {
+        try {
+            lock.acquire(time, unit);
+        } catch (Exception e) {
+            throw new CuratorClientException("加锁失败", e);
+        }
+    }
+
+    /**
+     * 释放锁
+     *
+     * @param lock 分布式锁对象
+     */
+    public void release(InterProcessLock lock) {
+        try {
+            lock.release();
+        } catch (Exception e) {
+            throw new CuratorClientException("释放锁失败", e);
+        }
+    }
+
+    /**
+     * 检查是否当前jvm的线程获取了锁
+     *
+     * @param lock 分布式锁对象
+     * @return true/false
+     */
+    public boolean isAcquiredInThisProcess(InterProcessLock lock) {
+        return lock.isAcquiredInThisProcess();
     }
 
     /**
