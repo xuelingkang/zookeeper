@@ -15,6 +15,12 @@
             <email>xuelingkang@163.com</email>
         </developer>
     </developers>
+    <licenses>
+        <license>
+            <name>GNU General Public License version 3</name>
+            <url>https://opensource.org/licenses/GPL-3.0</url>
+        </license>
+    </licenses>
     <scm>
         <url>https://gitee.com/xuelingkang/zookeeper</url>
     </scm>
