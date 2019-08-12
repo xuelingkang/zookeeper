@@ -8,6 +8,16 @@
     <version>1.0</version>
     <packaging>pom</packaging>
     <description>基于curator封装zookeeper常用api</description>
+    <developers>
+        <developer>
+            <name>薛凌康</name>
+            <url>https://gitee.com/xuelingkang</url>
+            <email>xuelingkang@163.com</email>
+        </developer>
+    </developers>
+    <scm>
+        <url>https://gitee.com/xuelingkang/zookeeper</url>
+    </scm>
     <modules>
         <module>curator-client</module>
         <module>curator-client-spring-boot-starter</module>
