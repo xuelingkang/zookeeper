@@ -1,6 +1,7 @@
 # 基于curator封装zookeeper常用api和springboot启动器
 ## 介绍
-启动器基于springboot2.1.3.RELEASE
+启动器基于springboot2.1.3.RELEASE<br>
+<a href="https://blog.csdn.net/qq_35433926" target="_blank">博客主页</a>
 ## 使用方法
 ### 直接使用
 项目已经发布到maven中央仓库，直接在pom.xml中引用即可
