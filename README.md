@@ -77,6 +77,4 @@ curator-client:
 
 具体请看`curator-client-demo`案例工程
 
-## 欢迎提出宝贵意见
-
-如果我的代码对您有帮助，希望给我个star，谢谢！
+## 欢迎issue和star！
